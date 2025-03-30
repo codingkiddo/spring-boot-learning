@@ -1,0 +1,3 @@
+com/example/annotations/conditional/DevEnvLoggingConfiguration.class
+com/example/annotations/conditional/IsDevEnvCondition.class
+com/example/annotations/conditional/LoggingService.class

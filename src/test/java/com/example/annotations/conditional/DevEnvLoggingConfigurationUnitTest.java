@@ -4,6 +4,9 @@ import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.springframework.boot.test.context.runner.ApplicationContextRunner;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+
 public class DevEnvLoggingConfigurationUnitTest {
 	
 	private final ApplicationContextRunner contextRunner = new ApplicationContextRunner();
@@ -20,10 +23,12 @@ public class DevEnvLoggingConfigurationUnitTest {
 		});
 		
 		contextRunner
+		.withPropertyValues("notification.service=email")
 		.withUserConfiguration(ConditionalTestConfiguration.class)
 		.run( context -> {
-			Assertions.assertNotNull(LoggingService.class);
+			assertThat(context).hasBean("loggingService");
 		});
+		
 		
 	}
 
